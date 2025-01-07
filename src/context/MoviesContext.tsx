@@ -31,21 +31,20 @@ const MoviesContext = createContext<MoviesContextType | undefined>(undefined);
 
 const KEY = import.meta.env.VITE_API_KEY;
 
-const BASE_URL = `${import.meta.env.VITE_API}top_rated?${KEY}`;
+const TOP_RATED_URL = `${import.meta.env.VITE_API}top_rated?${KEY}`;
 
 function MoviesProvider({ children }: MoviesProviderProps) {
-  const [baseUrl, setBaseUrl] = useState(BASE_URL);
+  const [topRatedUrl, setTopRatedUrl] = useState(TOP_RATED_URL);
   const [topRatedMovies, setTopRatedMovies] = useState<MoviesData[]>([]);
-  console.log(topRatedMovies);
 
   useEffect(() => {
     async function fetchTopRatedMovies() {
-      const res = await fetch(baseUrl);
+      const res = await fetch(topRatedUrl);
       const data = await res.json();
       setTopRatedMovies(data.results);
     }
     fetchTopRatedMovies();
-  }, [baseUrl]);
+  }, [topRatedUrl]);
 
   return (
     <MoviesContext.Provider value={{ topRatedMovies }}>

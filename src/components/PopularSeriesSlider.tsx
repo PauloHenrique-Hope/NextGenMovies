@@ -1,8 +1,8 @@
-import { useMovies } from "@/context/MoviesContext";
+import { useSeries } from "@/context/PopularSeriesContext";
 import Slider from "react-slick";
 const IMG = `${import.meta.env.VITE_IMG}`;
-export function MoviesSlider() {
-  const { topRatedMovies } = useMovies();
+export function PopularSeriesSlider() {
+  const { popularSeries } = useSeries();
 
   var settings = {
     dots: true,
@@ -41,15 +41,15 @@ export function MoviesSlider() {
 
   return (
     <Slider {...settings} className="p-2">
-      {topRatedMovies.map((movie, index) => (
-        <div key={index + 1} className="h-[500px] p-2">
+      {popularSeries.map((serie, index) => (
+        <div key={index + 1} className="h-[700px] p-2">
           <div className="flex flex-col justify-center items-center ">
             <img
               className="h-[450px] "
-              src={`${IMG}${movie.poster_path}`}
-              alt={movie.original_title}
+              src={`${IMG}${serie.poster_path}`}
+              alt={serie.name}
             />
-            <span>{movie.title}</span>
+            <span>{serie.original_name}</span>
           </div>
         </div>
       ))}

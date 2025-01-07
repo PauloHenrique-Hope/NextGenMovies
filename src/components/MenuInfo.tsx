@@ -6,10 +6,14 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { MenuOptions } from "@/data/MenuOption";
 import { Menu } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
-export function MenuCategories() {
-  const arrNumbers = Array.from({ length: 5 }, (_, i) => i + 1);
+export function MenuInfo() {
+  // const arrNumbers = Array.from({ length: 5 }, (_, i) => i + 1);
+
+  const menuOption = MenuOptions;
 
   return (
     <Sheet>
@@ -18,14 +22,16 @@ export function MenuCategories() {
       </SheetTrigger>
       <SheetContent side={"right"}>
         <SheetHeader>
-          <SheetTitle>Categories</SheetTitle>
+          <SheetTitle>Menu</SheetTitle>
           <SheetDescription>
             Choose between the best movies categories and enjoy!
           </SheetDescription>
         </SheetHeader>
         <ul className="flex flex-col gap-2 text-gray-400 mt-3">
-          {arrNumbers.map((el, index) => (
-            <li key={index}>{el}</li>
+          {menuOption.map((optionData, index) => (
+            <NavLink key={index} to={"/popular-series"}>
+              <li>{optionData.option}</li>
+            </NavLink>
           ))}
         </ul>
       </SheetContent>
