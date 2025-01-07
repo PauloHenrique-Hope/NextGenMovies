@@ -14,9 +14,9 @@ export function MenuCategories() {
   return (
     <Sheet>
       <SheetTrigger>
-        <Menu color="black" size={24} />
+        <Menu color="white" size={24} />
       </SheetTrigger>
-      <SheetContent side={"left"}>
+      <SheetContent side={"right"}>
         <SheetHeader>
           <SheetTitle>Categories</SheetTitle>
           <SheetDescription>
