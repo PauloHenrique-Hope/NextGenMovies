@@ -1,5 +1,6 @@
 import { useSeries } from "@/context/PopularSeriesContext";
 import Slider from "react-slick";
+import { PopularSeriesDialog } from "./PopularSeriesDialog";
 const IMG = `${import.meta.env.VITE_IMG}`;
 export function PopularSeriesSlider() {
   const { popularSeries } = useSeries();
@@ -49,7 +50,14 @@ export function PopularSeriesSlider() {
               src={`${IMG}${serie.poster_path}`}
               alt={serie.name}
             />
-            <span>{serie.original_name}</span>
+            <span className="text-2xl">{serie.name}</span>
+            <PopularSeriesDialog
+              index={index}
+              original_name={serie.original_name}
+              overview={serie.overview}
+              first_air_date={serie.first_air_date}
+              vote_average={serie.vote_average}
+            />
           </div>
         </div>
       ))}
